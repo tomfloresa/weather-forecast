@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import moment from "moment";
 
 // UI Components
 import { TodaysWeatherCard, ForecastSliderCard } from "./components";
@@ -10,8 +13,12 @@ import { getCurrentWeather, getFiveDaysForecast } from "./../../services";
 // Utils
 import {
   buildDailyForecastFromList,
-  buildWeatherForDayUsingForecasts
+  buildWeatherForDayUsingForecasts,
+  translateDayNameToSpanish
 } from "../../utils";
+
+// Actions
+import { closeLoader, deployLoader } from "../../redux/actions";
 
 // Styles
 import { ForecastWrapper, ForecastSliderWrapper } from "./Forecast.styled";
@@ -19,15 +26,25 @@ import { ForecastWrapper, ForecastSliderWrapper } from "./Forecast.styled";
 // Slider configuration
 const sliderConfiguration = {
   pagination: {
-    clickable: true
+    clickable: true,
+    type: "bullets",
+    bulletElement: "span",
+    el: ".swiper-pagination"
   },
-  slidesPerView: 2,
+  slidesPerView: 1,
+  slidesPerGroup: 1,
   spaceBetween: 32,
   observer: true,
-  initialSlide: 0
+  initialSlide: 0,
+  effect: "coverflow",
+  coverflowEffect: {
+    slideShadows: false,
+    stretch: 10
+  },
+  keyboard: true
 };
 
-export default class Forecast extends Component {
+class Forecast extends Component {
   constructor(props) {
     super(props);
 
@@ -35,6 +52,8 @@ export default class Forecast extends Component {
   }
 
   async componentDidMount() {
+    this.props.deployLoader();
+
     try {
       const currentWeather = await (await getCurrentWeather()).data;
       const forecastedWeather = await (await getFiveDaysForecast()).data;
@@ -54,13 +73,18 @@ export default class Forecast extends Component {
     } catch (error) {
       console.log(error);
     }
+
+    this.props.closeLoader();
   }
 
   /**
    * ACTIONS
    */
-  onForecastClicked = () => {
-    console.log("CLICKED");
+  onForecastClicked = date => {
+    const dayFromDate = moment(date, "DD/MM/YYYY").format("dddd");
+    const dayInSpanish = translateDayNameToSpanish(dayFromDate);
+
+    this.props.history.push(`/${dayInSpanish}`);
   };
 
   render() {
@@ -77,7 +101,7 @@ export default class Forecast extends Component {
                 ? forecastPerDay.map(forecast => (
                     <ForecastSliderCard
                       forecastedWeather={forecast}
-                      forecastClicked={() => this.onForecastClicked()}
+                      forecastClicked={date => this.onForecastClicked(date)}
                       key={forecast.min}
                     />
                   ))
@@ -89,3 +113,14 @@ export default class Forecast extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      closeLoader,
+      deployLoader
+    },
+    dispatch
+  );
+
+export default connect(null, mapDispatchToProps)(Forecast);

@@ -28,9 +28,25 @@
         width: 100%;
         font-family: "SFProText";
         box-sizing: content-box;
+        overflow: hidden;
+        background-color: #eff6ff;
       }
       .swiper-wrapper {
         padding: 16px 0px;
+      }
+      .swiper-container {
+        overflow: inherit !important;
+      }
+      .swiper-container-3d .swiper-slide-shadow-left {
+        background-image: none !important;
+      }
+      .swiper-container-3d .swiper-slide-shadow-right {
+        background-image: none !important;
+      }
+      .swiper-pagination-fraction,
+      .swiper-pagination-custom,
+      .swiper-container-horizontal > .swiper-pagination-bullets {
+        bottom: -10px !important;
       }
     </style>
   </head>

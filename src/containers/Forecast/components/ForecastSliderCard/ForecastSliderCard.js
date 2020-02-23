@@ -34,7 +34,7 @@ const ForecastSliderCardDate = styled(ForecastSliderCardTitle)`
 
 const ForecastSliderCard = ({ forecastedWeather, forecastClicked }) => {
   return (
-    <ForecastSliderCardWrapper onClick={() => forecastClicked()}>
+    <ForecastSliderCardWrapper onClick={() => forecastClicked(forecastedWeather.date)}>
       <ForecastSliderCardImage src={getWeatherImage(forecastedWeather.icon)} />
       <ForecastSliderInfo>
         <ForecastSliderCardTitle>{`Min: ${Math.ceil(

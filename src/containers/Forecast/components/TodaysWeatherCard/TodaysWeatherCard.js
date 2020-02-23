@@ -19,7 +19,7 @@ const TodaysWeatherCardWrapper = styled.div`
 const TodaysWeatherCardDate = styled.span`
   padding: 8px;
   color: ${props => props.theme.colors.white};
-  background: #0077ff;
+  background: ${p => p.theme.colors.main};
   display: block;
   border-radius: 8px;
   margin-bottom: 16px;
