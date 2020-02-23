@@ -67,7 +67,8 @@ export const buildWeatherForDayUsingForecasts = dayForecast => {
   const dayWeather = {
     min: Math.min.apply(null, mins),
     max: Math.max.apply(null, maxs),
-    icon: mode(pictures)
+    icon: mode(pictures),
+    date: moment.unix(dayForecast[0].dt).format("DD/MM/YYYY")
   };
 
   return dayWeather;

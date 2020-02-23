@@ -22,8 +22,9 @@ const sliderConfiguration = {
     clickable: true
   },
   slidesPerView: 2,
-  spaceBetween: 22,
-  observer: true
+  spaceBetween: 32,
+  observer: true,
+  initialSlide: 0
 };
 
 export default class Forecast extends Component {
@@ -55,6 +56,13 @@ export default class Forecast extends Component {
     }
   }
 
+  /**
+   * ACTIONS
+   */
+  onForecastClicked = () => {
+    console.log("CLICKED");
+  };
+
   render() {
     const { currentWeather, forecastPerDay } = this.state;
 
@@ -69,6 +77,7 @@ export default class Forecast extends Component {
                 ? forecastPerDay.map(forecast => (
                     <ForecastSliderCard
                       forecastedWeather={forecast}
+                      forecastClicked={() => this.onForecastClicked()}
                       key={forecast.min}
                     />
                   ))

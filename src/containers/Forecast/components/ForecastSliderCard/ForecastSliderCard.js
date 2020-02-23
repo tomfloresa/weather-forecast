@@ -12,6 +12,7 @@ const ForecastSliderCardWrapper = styled(Card)`
   margin: auto;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 
 const ForecastSliderCardImage = styled.img`
@@ -27,17 +28,24 @@ const ForecastSliderCardTitle = styled.span`
   text-align: center;
 `;
 
-const ForecastSliderCard = ({ forecastedWeather }) => {
+const ForecastSliderCardDate = styled(ForecastSliderCardTitle)`
+  margin: 16px;
+`;
+
+const ForecastSliderCard = ({ forecastedWeather, forecastClicked }) => {
   return (
-    <ForecastSliderCardWrapper>
+    <ForecastSliderCardWrapper onClick={() => forecastClicked()}>
       <ForecastSliderCardImage src={getWeatherImage(forecastedWeather.icon)} />
       <ForecastSliderInfo>
         <ForecastSliderCardTitle>{`Min: ${Math.ceil(
           forecastedWeather.min
         )}ºC`}</ForecastSliderCardTitle>
-        <ForecastSliderCardTitle>{`Min: ${Math.ceil(
+        <ForecastSliderCardTitle>{`Max: ${Math.ceil(
           forecastedWeather.max
         )}ºC`}</ForecastSliderCardTitle>
+        <ForecastSliderCardDate>
+          {forecastedWeather.date}
+        </ForecastSliderCardDate>
       </ForecastSliderInfo>
     </ForecastSliderCardWrapper>
   );

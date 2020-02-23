@@ -8,7 +8,7 @@ import "swiper/css/swiper.css";
 
 const Slider = ({ slides, config }) => (
   <Swiper {...config}>
-    {slides && slides.map(slide => <div>{slide}</div>)}
+    {slides && slides.map((slide, index) => <div key={index}>{slide}</div>)}
   </Swiper>
 );
 

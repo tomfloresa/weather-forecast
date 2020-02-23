@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 
 // Containers (Views)
-import { Forecast } from "./containers";
+import { Forecast, WeatherDetail } from "./containers";
 
 class App extends React.Component {
   render() {
@@ -14,7 +14,8 @@ class App extends React.Component {
       <ThemeProvider theme={theme}>
         <Router>
           <Switch>
-            <Route path="/forecast" component={Forecast} />
+            <Route path="/:dayName" component={WeatherDetail} />
+            <Route path="/" component={Forecast} />
           </Switch>
         </Router>
       </ThemeProvider>
