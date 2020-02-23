@@ -7,70 +7,56 @@ import { scaleTime, scaleLinear } from "@vx/scale";
 import { curveMonotoneX, curveBasis } from "@vx/curve";
 import { extent, max } from "d3-array";
 
-const data = genDateValue(15);
-
-const margin = {
-  top: 60,
-  bottom: 60,
-  left: 80,
-  right: 80
-};
-
-const width = 400;
-const height = 600;
-
-const xMax = width - margin.left - margin.right;
-const yMax = height - margin.top - margin.bottom;
-
-const x = d => d.date.getTime();
-const y = d => d.value;
-
-// scales
-const xScale = scaleTime({
-  domain: extent(data, x)
-});
-const yScale = scaleLinear({
-  domain: [0, max(data, y)]
-});
+const x = d => d.dt;
+const y = d => d.main.temp;
 
 // colors
-const primary = "#8921e0";
-const secondary = "#00f2ff";
+const primary = "#ffffff";
+const secondary = "#0077ff";
 const contrast = "#ffffff";
 
-export default ({
-  width = 800,
-  height = 600,
-  margin = { top: 60, bottom: 60, left: 80, right: 80 }
+const Graph = ({
+  parentWidth,
+  parentHeight,
+  margin = { top: 20, bottom: 20, left: 20, right: 20 },
+  forecasts
 }) => {
   // bounds
-  const xMax = width - margin.left - margin.right;
-  const yMax = height - margin.top - margin.bottom;
+  const xMax = parentWidth;
+  const yMax = parentHeight;
+
+  // scales
+  const xScale = scaleTime({
+    domain: extent(forecasts, x)
+  });
+  const yScale = scaleLinear({
+    domain: [0, max(forecasts, y)]
+  });
 
   // update scale range to match bounds
   xScale.range([0, xMax]);
   yScale.range([yMax, 0]);
 
   return (
-    <svg width={width} height={height}>
+    <svg width={parentWidth} height={parentHeight}>
       <rect
         x={0}
         y={0}
-        width={width}
-        height={height}
+        width={parentWidth}
+        height={parentHeight}
         fill={secondary}
         rx={14}
       />
       <Group top={margin.top}>
         <LinePath
-          data={data}
-          x={x => xScale(x.date.getTime())}
-          y={y => yScale(y.value)}
+          data={forecasts}
+          x={x => xScale(x.dt)}
+          y={y => yScale(y.main.temp)}
           stroke={primary}
           strokeWidth={3}
           curve={curveMonotoneX}
         />
-        {data.map((d, i) => {
+        {forecasts.map((d, i) => {
           const cx = xScale(x(d));
           const cy = yScale(y(d));
 
@@ -100,3 +86,5 @@ export default ({
     </svg>
   );
 };
+
+export default Graph;

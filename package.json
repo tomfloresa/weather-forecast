@@ -12,6 +12,7 @@
     "@vx/grid": "0.0.194",
     "@vx/group": "0.0.194",
     "@vx/mock-data": "0.0.194",
+    "@vx/responsive": "0.0.194",
     "@vx/scale": "0.0.194",
     "@vx/shape": "0.0.194",
     "@vx/tooltip": "0.0.194",

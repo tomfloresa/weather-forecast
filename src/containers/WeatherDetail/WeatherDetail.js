@@ -3,6 +3,7 @@ import moment from "moment";
 
 // UI Components
 import { Graph } from "../../components";
+import { withParentSize } from "@vx/responsive";
 
 // Services
 import { getFiveDaysForecast } from "../../services/weatherService";
@@ -12,6 +13,14 @@ import {
   buildDailyForecastFromList,
   translateDayNameToEnglish
 } from "../../utils";
+
+// Styles
+import {
+  WeatherDetailWrapper,
+  WeatherDetailGraphWrapper
+} from "./WeatherDetail.styled";
+
+const ResponsiveChart = withParentSize(Graph);
 
 class WeatherDetail extends Component {
   constructor(props) {
@@ -51,9 +60,13 @@ class WeatherDetail extends Component {
     const { day } = this.state;
 
     return (
-      <div style={{ padding: "16px" }}>
-        {day && <Graph forecasts={day} />}
-      </div>
+      <WeatherDetailWrapper>
+        {day && (
+          <WeatherDetailGraphWrapper>
+            <ResponsiveChart forecasts={day} />
+          </WeatherDetailGraphWrapper>
+        )}
+      </WeatherDetailWrapper>
     );
   }
 }
