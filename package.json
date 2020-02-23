@@ -1,6 +1,6 @@
 {
   "name": "weather-forecast",
-  "homepage": "https://github.com/tomfloresa/weather-forecast",
+  "homepage": "http://tomfloresa.github.io/weather-forecast",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
