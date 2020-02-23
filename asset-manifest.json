@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.js": "/tomfloresa/weather-forecast/static/js/main.1cf905da.chunk.js",
-    "main.js.map": "/tomfloresa/weather-forecast/static/js/main.1cf905da.chunk.js.map",
+    "main.js": "/tomfloresa/weather-forecast/static/js/main.952d05de.chunk.js",
+    "main.js.map": "/tomfloresa/weather-forecast/static/js/main.952d05de.chunk.js.map",
     "runtime-main.js": "/tomfloresa/weather-forecast/static/js/runtime-main.d0c649ba.js",
     "runtime-main.js.map": "/tomfloresa/weather-forecast/static/js/runtime-main.d0c649ba.js.map",
     "static/css/2.6bf38e3a.chunk.css": "/tomfloresa/weather-forecast/static/css/2.6bf38e3a.chunk.css",
-    "static/js/2.8848be2f.chunk.js": "/tomfloresa/weather-forecast/static/js/2.8848be2f.chunk.js",
-    "static/js/2.8848be2f.chunk.js.map": "/tomfloresa/weather-forecast/static/js/2.8848be2f.chunk.js.map",
+    "static/js/2.bcdf9b01.chunk.js": "/tomfloresa/weather-forecast/static/js/2.bcdf9b01.chunk.js",
+    "static/js/2.bcdf9b01.chunk.js.map": "/tomfloresa/weather-forecast/static/js/2.bcdf9b01.chunk.js.map",
     "index.html": "/tomfloresa/weather-forecast/index.html",
-    "precache-manifest.25b832eb8ab245bf6fd82faa79fa151f.js": "/tomfloresa/weather-forecast/precache-manifest.25b832eb8ab245bf6fd82faa79fa151f.js",
+    "precache-manifest.048acede3848e76dceef01cfb62c9143.js": "/tomfloresa/weather-forecast/precache-manifest.048acede3848e76dceef01cfb62c9143.js",
     "service-worker.js": "/tomfloresa/weather-forecast/service-worker.js",
     "static/css/2.6bf38e3a.chunk.css.map": "/tomfloresa/weather-forecast/static/css/2.6bf38e3a.chunk.css.map",
-    "static/js/2.8848be2f.chunk.js.LICENSE.txt": "/tomfloresa/weather-forecast/static/js/2.8848be2f.chunk.js.LICENSE.txt"
+    "static/js/2.bcdf9b01.chunk.js.LICENSE.txt": "/tomfloresa/weather-forecast/static/js/2.bcdf9b01.chunk.js.LICENSE.txt",
+    "static/media/loader.svg": "/tomfloresa/weather-forecast/static/media/loader.f62f3fc8.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.d0c649ba.js",
     "static/css/2.6bf38e3a.chunk.css",
-    "static/js/2.8848be2f.chunk.js",
-    "static/js/main.1cf905da.chunk.js"
+    "static/js/2.bcdf9b01.chunk.js",
+    "static/js/main.952d05de.chunk.js"
   ]
 }
